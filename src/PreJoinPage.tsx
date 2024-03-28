@@ -60,6 +60,7 @@ export const PreJoinPage = ({
           ...styles.input,
         }}
         onChangeText={setToken}
+        multiline
         value={token}
       />
 

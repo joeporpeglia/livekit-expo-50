@@ -25,6 +25,7 @@ import {
   useParticipant,
   AudioSession,
   useIOSAudioManagement,
+  AndroidAudioTypePresets,
 } from "@livekit/react-native";
 import type { TrackPublication } from "livekit-client";
 import { Platform } from "react-native";
@@ -66,6 +67,11 @@ export const RoomPage = ({
       //     defaultOutput: "earpiece"
       //   }
       // });
+      await AudioSession.configureAudio({
+        android: {
+          audioTypeOptions: AndroidAudioTypePresets.media,
+        },
+      });
       await AudioSession.startAudioSession();
       await room.connect(url, token, {});
       console.log("connected to ", url, " ", token);
